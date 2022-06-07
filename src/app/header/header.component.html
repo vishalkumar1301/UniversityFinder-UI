@@ -1,0 +1,16 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">
+        <img src="./assets/Cologist.PNG" alt="Company logo" width="90" height="72">
+      </a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2 w-200" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <div>
+        <a href="/admin"><button class="btn btn-light ml-auto border border-secondary" type="submit" id="admin">Admin</button></a>&nbsp;
+        <button class="btn btn-primary" type="submit" id="login" *ngIf="isAuthenticated">Logout</button>
+        <button class="btn btn-primary" type="submit" id="logout" *ngIf="!isAuthenticated">Login</button>
+      </div>
+    </div>
+  </nav>

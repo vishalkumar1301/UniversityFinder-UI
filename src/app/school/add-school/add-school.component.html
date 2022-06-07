@@ -1,0 +1,101 @@
+<div>
+    <h2>Add information to create School</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label>
+                School Name:
+                <input type="text" formControlName="SchoolName">
+            </label>
+        </div>
+        <div>
+            <label>
+                School Moto:
+                <input type="text" formControlName="SchoolMoto">
+            </label>
+        </div>
+        <div>
+            <label>
+                School Type:
+                <select formControlName="SchoolType">
+                    <option value="">Select School Type</option>
+                    <option value="public">University</option>
+                    <option value="private">College</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                School Type Public/Private:
+                <select formControlName="SchoolTypePublicPrivate">
+                    <option value="">Select School Type</option>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                School Email:
+                <input type="text" formControlName="SchoolEmail">
+            </label>
+        </div>
+        <div>
+            <label>
+                School Phone Number:
+                <input type="text" formControlName="SchoolPhoneNumber">
+            </label>
+        </div>
+        <div>
+            <label>
+                School Website:
+                <input type="text" formControlName="SchoolWebsite">
+            </label>
+        </div>
+        <div>
+            <label>
+                School Created At Date:
+                <input type="text" formControlName="SchoolCreatedAtDate">
+            </label>
+        </div>
+        <div formGroupName="SchoolAddress">
+            <h3>School Address</h3>
+            <div>
+                <label>
+                    School Street:
+                    <input type="text" formControlName="SchoolStreet">
+                </label>
+            </div>
+            <div>
+                <label>
+                    School City:
+                    <input type="text" formControlName="SchoolCity">
+                </label>
+            </div>
+            <div>
+                <label>
+                    School State:
+                    <input type="text" formControlName="SchoolState">
+                </label>
+            </div>
+            <div>
+                <label>
+                    Zip Code:
+                    <input type="text" formControlName="SchoolZip">
+                </label>
+            </div>
+            <div>
+                <label>
+                    School Location String:
+                    <input type="text" formControlName="SchoolLocationString">
+                </label>
+            </div>
+            <div>
+                <label>
+                    School Country:
+                    <input type="text" formControlName="SchoolCountry">
+                </label>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
