@@ -1,4 +1,6 @@
-export interface ISchool {
+import {CanBeSentOverToBackend} from './ISendableToBackend';
+
+export interface ISchoolSendable extends CanBeSentOverToBackend {
     Name: string;
     Moto: string;
     Type: string;
@@ -7,12 +9,11 @@ export interface ISchool {
     PhoneNumber: string;
     Website: string;
     CreatedAtDate: string;
-    Address: ISchoolAddress;
+    Address: ISchoolAddressSendable;
 }
 
-export interface ISchoolAddress {
+interface ISchoolAddressSendable {
     LocationString: string;
-    Street: string;
     City: string;
     State: string;
     ZipCode: string;

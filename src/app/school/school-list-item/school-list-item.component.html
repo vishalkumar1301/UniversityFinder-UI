@@ -1,0 +1,10 @@
+<div class="list-group col-md-8" style="margin: 0 auto; margin-bottom: 20px;">
+    <a [routerLink]="['/school/school-details', schoolListItem.Id]" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{schoolListItem.Name}}</h5>
+        <small>{{schoolListItem.CreatedAtDate}}</small>
+      </div>
+      <p class="mb-1">It's a {{schoolListItem.TypePublicPrivate}} {{schoolListItem.Type}}</p>
+      <small>In {{schoolListItem.Country}}, {{schoolListItem.City}}</small>
+    </a>
+</div>

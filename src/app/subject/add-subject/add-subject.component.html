@@ -1,0 +1,21 @@
+<div class="col-md-12">
+    <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" id="subjectForm">
+        <div>
+            <label for="subjectName">Subject Name</label>
+            <input type="text" class="form-control" id="subjectName" formControlName="name">
+        </div>
+        <div>
+            <label for="subjectCode">Subject Code</label>
+            <input type="text" class="form-control" id="subjectCode" formControlName="code">
+        </div>
+        <div>
+            <label for="tags">Tags</label>
+            <input type="text" class="form-control" id="tags" formControlName="tags">
+        </div>
+        <div>
+            <label for="subjectDescription">Subject Description</label>
+            <input type="text" class="form-control" id="subjectDescription" formControlName="description">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

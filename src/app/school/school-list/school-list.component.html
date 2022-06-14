@@ -1,0 +1,10 @@
+<div>
+    <div style="text-align: center;">
+        <div *ngIf="schoolList != null">
+            <app-school-list-item *ngFor="let schoolListItem of schoolList" [schoolListItem]="schoolListItem"></app-school-list-item>
+        </div>
+        <div *ngIf="schoolList == null">
+            <app-alert [messageType]="'secondary'" [message]="'There are no school added yet!'"></app-alert>
+        </div>
+    </div>
+</div>

@@ -11,16 +11,36 @@ import { AdminActionComponent } from './admin/admin-action/admin-action.componen
 import { AddSchoolComponent } from './school/add-school/add-school.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewSchoolComponent } from './school/view-school/view-school.component';
-import { SendDataService } from './send-data.service';
+import { BackendService } from './backend.service';
+import { SchoolService } from './school/school-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SchoolComponent } from './school/school.component';
+import { CourseComponent } from './course/course.component';
+import { SubjectComponent } from './subject/subject.component';
+import { AddCourseComponent } from './course/add-course/add-course.component';
+import { ViewCourseComponent } from './course/view-course/view-course.component';
+import { AddSubjectComponent } from './subject/add-subject/add-subject.component';
+import { ViewSubjectComponent } from './subject/view-subject/view-subject.component';
+import { CourseService } from './course/course.service';
+import { SubjectService } from './subject/subject.service';
+import { SchoolListComponent } from './school/school-list/school-list.component';
+import { SchoolDetailsComponent } from './school/school-details/school-details.component';
+import { SchoolListItemComponent } from './school/school-list-item/school-list-item.component';
+import { MapperService } from './mapper.service';
+import { AlertComponent } from './uimessage/alert/alert.component';
+import { ModalComponent } from './uimessage/modal/modal.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'school', component: SchoolComponent },
   { path: 'school/add-school', component: AddSchoolComponent },
-  { path: 'school/view-school', component: ViewSchoolComponent },
+  { path: 'course', component: CourseComponent },
+  { path: 'course/add-course', component: AddCourseComponent },
+  { path: 'course/view-course', component: ViewCourseComponent },
+  { path: 'subject', component: SubjectComponent },
+  { path: 'subject/add-subject', component: AddSubjectComponent },
+  { path: 'school/school-details/:id', component: SchoolDetailsComponent },
+  { path: 'school/school-list', component: SchoolListComponent }
 ];
 
 @NgModule({
@@ -31,7 +51,17 @@ const appRoutes: Routes = [
     AdminActionComponent,
     SchoolComponent,
     AddSchoolComponent,
-    ViewSchoolComponent
+    CourseComponent,
+    SubjectComponent,
+    AddCourseComponent,
+    ViewCourseComponent,
+    AddSubjectComponent,
+    ViewSubjectComponent,
+    SchoolListComponent,
+    SchoolDetailsComponent,
+    SchoolListItemComponent,
+    AlertComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +73,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [SendDataService],
+  providers: [BackendService, SchoolService, CourseService, SubjectService, MapperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

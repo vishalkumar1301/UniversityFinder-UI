@@ -7,11 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AdminActionComponent implements OnInit {
 
-  @Input() buttonName: string = '';
+  @Input() addButtonName: string = '';
+  @Input() viewButtonName: string = '';
+  @Input() addLink: string = '';
+  @Input() viewLink: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.addLink);
   }
 
 }

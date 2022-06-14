@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { ISchool } from '../../Interface/SchoolInterface';
-import { SendDataService } from '../../send-data.service';
+import { ISchoolSendable } from '../../Interface/SendableDataInterface/ISchoolSendable';
+import { SchoolService } from '../school-service.service';
 
 @Component({
   selector: 'app-add-school',
@@ -11,43 +11,24 @@ import { SendDataService } from '../../send-data.service';
 })
 export class AddSchoolComponent implements OnInit {
 
-  profileForm = this.createProfileForm (this.fb);
+  schoolForm = this.schoolService.createSchoolForm (this.fb);
 
-  constructor(private fb: FormBuilder, private sendData: SendDataService) { }
+  constructor(private fb: FormBuilder, private schoolService: SchoolService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    if(this.profileForm.valid){
-      let schoolData = this.mapInputDataToSchoolInterface(this.profileForm);
-      this.sendData.sendData(schoolData);
+    if(this.schoolForm.valid){
+      let schoolData = this.mapInputDataToSchoolInterface(this.schoolForm);
+      this.schoolService.addSchool(schoolData);
+      // TODO: reset form after receiving response from server
+      this.schoolForm.reset();
     }
   }
 
-  private createProfileForm (fb: FormBuilder) {
-    return fb.group({
-      SchoolName: ['', Validators.required],
-      SchoolMoto: ['', Validators.required],
-      SchoolType: ['', Validators.required],
-      SchoolTypePublicPrivate: ['', Validators.required],
-      SchoolEmail: ['', Validators.required],
-      SchoolPhoneNumber: ['', Validators.required],
-      SchoolWebsite: ['', Validators.required],
-      SchoolCreatedAtDate: ['', Validators.required],
-      SchoolAddress: this.fb.group({
-        SchoolLocationString: ['', Validators.required],
-        SchoolStreet: ['', Validators.required],
-        SchoolCity: ['', Validators.required],
-        SchoolState: ['', Validators.required],
-        SchoolZip: ['', Validators.required],
-        SchoolCountry: ['', Validators.required]
-      }),
-    });
-  }
-
-  private mapInputDataToSchoolInterface(profileForm: any): ISchool { 
-    const inputData: ISchool = {
+  private mapInputDataToSchoolInterface(profileForm: any): ISchoolSendable { 
+    const inputData: ISchoolSendable = {
       Name: <string>profileForm.value.SchoolName,
       Moto: <string>profileForm.value.SchoolMoto,
       Type: <string>profileForm.value.SchoolType,
@@ -58,7 +39,6 @@ export class AddSchoolComponent implements OnInit {
       CreatedAtDate: <string>profileForm.value.SchoolCreatedAtDate,
       Address: {
         LocationString: <string>profileForm.get(['SchoolAddress', 'SchoolLocationString'])?.value ?? '',
-        Street: <string>profileForm.get(['SchoolAddress', 'SchoolStreet'])?.value ?? '',
         City: <string>profileForm.get(['SchoolAddress', 'SchoolCity'])?.value ?? '',
         State: <string>profileForm.get(['SchoolAddress', 'SchoolState'])?.value ?? '',
         ZipCode: <string>profileForm.get(['SchoolAddress', 'SchoolZip'])?.value ?? '',

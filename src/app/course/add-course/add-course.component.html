@@ -1,0 +1,28 @@
+<div class="col-md-12">
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" id="courseForm">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div>
+            <label for="courseLevel">Course Level</label>
+            <select class="form-control" id="courseLevel" formControlName="courseLevel">
+                <option value="">Select Course Level</option>
+                <option value="diploma">Diploma</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+                <option value="postgraduate">Postgraduate</option>
+                <option value="doctrate">Doctrate</option>
+            </select>
+        </div>
+        <div>
+            <label for="tags">Tags</label>
+            <input type="text" class="form-control" id="tags" formControlName="tags">
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" formControlName="price">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
